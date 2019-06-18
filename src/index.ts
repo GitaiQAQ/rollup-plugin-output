@@ -2,13 +2,8 @@ import { name } from "../package.json";
 import { createFilter } from "rollup-pluginutils";
 
 const BUILDIN_FORMAT = {
-    raw(bundle) {
-        return new Function("define", "return " + bundle.code)(func => {
-            return func.toString();
-        });
-    },
-    json(bundle) {
-        return new Function("define", "return " + bundle.code)(func =>
+    json(code) {
+        return new Function("define", "return " + code)(func =>
             JSON.stringify(func(), null, 4)
         );
     }
@@ -29,18 +24,22 @@ export default function(options: Options = {}) {
                 outputOptions.transform instanceof Function
             ) {
                 Object.keys(bundles).forEach(
-                    key => filter(key) && outputOptions.transform(bundles[key])
+                    key =>
+                        filter(key) &&
+                        (bundles[key].code = outputOptions.transform(
+                            bundles[key].code
+                        ))
                 );
             }
         },
         outputOptions(outputOptions) {
             if (Object.keys(BUILDIN_FORMAT).includes(outputOptions.format)) {
-                outputOptions.format = "amd";
                 outputOptions.transform = BUILDIN_FORMAT[outputOptions.format];
+                outputOptions.format = "amd";
                 return outputOptions;
             } else if (outputOptions.format instanceof Function) {
-                outputOptions.format = "amd";
                 outputOptions.transform = outputOptions.format;
+                outputOptions.format = "amd";
             }
             return outputOptions;
         }

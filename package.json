@@ -1,6 +1,6 @@
 {
     "name": "rollup-plugin-output",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "dist/rollup-plugin-output.cjs.js",
     "module": "dist/rollup-plugin-output.es.js",
     "author": "Gitai <i@gitai.me>",
@@ -18,7 +18,7 @@
     ],
     "scripts": {
         "build": "rollup -c",
-        "prebuild": "rm -rf dist/*",
+        "prebuild": "shx rm -rf dist/*",
         "prepare": "npm run build"
     },
     "dependencies": {
@@ -34,10 +34,10 @@
         "typescript": "^3.4.3"
     },
     "files": [
-        "src",
         "dist",
-        "index.d.ts",
-        "README.md"
+        "LICENSE",
+        "README.md",
+        "package.json"
     ],
     "repository": "gitaiQAQ/rollup-plugin-output"
 }
