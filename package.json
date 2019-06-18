@@ -1,0 +1,43 @@
+{
+    "name": "rollup-plugin-output",
+    "version": "1.0.0",
+    "main": "dist/rollup-plugin-output.cjs.js",
+    "module": "dist/rollup-plugin-output.es.js",
+    "author": "Gitai <i@gitai.me>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/gitaiQAQ/rollup-plugin-output/issues"
+    },
+    "homepage": "https://github.com/gitaiQAQ/rollup-plugin-output#readme",
+    "keywords": [
+        "rollup",
+        "rollup-plugin",
+        "es2015",
+        "npm",
+        "modules"
+    ],
+    "scripts": {
+        "build": "rollup -c",
+        "prebuild": "rm -rf dist/*",
+        "prepare": "npm run build"
+    },
+    "dependencies": {
+        "rollup-pluginutils": "^2.8.1"
+    },
+    "devDependencies": {
+        "rollup": "^1.9.1",
+        "rollup-plugin-buble": "^0.19.6",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-typescript": "^1.0.1",
+        "shx": "^0.3.2",
+        "tslib": "^1.10.0",
+        "typescript": "^3.4.3"
+    },
+    "files": [
+        "src",
+        "dist",
+        "index.d.ts",
+        "README.md"
+    ],
+    "repository": "gitaiQAQ/rollup-plugin-output"
+}
